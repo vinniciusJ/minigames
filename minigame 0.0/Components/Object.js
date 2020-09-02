@@ -11,7 +11,7 @@ export default class ObjectCanvas {
         this.color = color
         this.context = context
     }
-    update(){
+    updateObject(){
         this.context.fillStyle = this.color
 
         if((this.x + this.width) >= this.context.canvas.width){
@@ -24,4 +24,5 @@ export default class ObjectCanvas {
         this.speedX += this.speedX
         this.speedY += this.speedY
     }
+
 }
