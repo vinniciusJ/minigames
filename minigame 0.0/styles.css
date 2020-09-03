@@ -4,11 +4,10 @@
     box-sizing: border-box;
 }
 body{
-    overflow: hidden;
+    
+    background: #282828;
 }
 #game-area{
-    width: 100vw;
-    height: 90vh;
 
-    background: #cecece;
+    background: #646464;
 }

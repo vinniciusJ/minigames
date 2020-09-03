@@ -14,15 +14,13 @@ export default class ObjectCanvas {
     updateObject(){
         this.context.fillStyle = this.color
 
-        if((this.x + this.width) >= this.context.canvas.width){
-            this.x = 0
-        }
-
         this.context.fillRect(this.x, this.y, this.width, this.height)
     }
     updatePosition(){
-        this.speedX += this.speedX
-        this.speedY += this.speedY
+        //console.log(this.speedX)
+        this.x += this.speedX
+        this.y += this.speedY  
     }
+    
 
 }
