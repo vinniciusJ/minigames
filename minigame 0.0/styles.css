@@ -4,10 +4,11 @@
     box-sizing: border-box;
 }
 body{
-    
+    display: flex;
+   
     background: #282828;
 }
 #game-area{
-
+    margin: 10rem auto;
     background: #646464;
 }
