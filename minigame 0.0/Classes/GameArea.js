@@ -1,6 +1,7 @@
 export default class GameArea {
-    constructor(){
+    constructor(intervalFunction){
         this.canvas = document.createElement("canvas")
+        this.intervalFunction = intervalFunction
     }
     start(intervalFunction){
         this.canvas.setAttribute('id', 'game-area')
@@ -11,11 +12,12 @@ export default class GameArea {
         document.body.insertBefore(this.canvas, document.body.childNodes[0])
 
         this.frameNo = 0 // Para contar os quadros por intervalo
-        this.interval = setInterval(intervalFunction, 20)
+        this.interval = setInterval(this.intervalFunction, 20)
 
         window.addEventListener('keydown', event => {
             this.keys = (this.keys || [])
             this.keys[event.keyCode] = true
+
         })
         window.addEventListener('keyup', event => {
             this.keys[event.keyCode] = false

@@ -4,8 +4,9 @@ function generateRandomNumber(min, max){
 
 export function createRandomPosition(minHeight, maxHeight, minGap, maxGap){
     
-    let height = generateRandomNumber(20, 200)
-    let gap = generateRandomNumber(50, 200)
+    let height = generateRandomNumber(minHeight, maxHeight)
+    let gap = generateRandomNumber(minGap, maxGap)
 
+   
     return {height, gap}
 }
