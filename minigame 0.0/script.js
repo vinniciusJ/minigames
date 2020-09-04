@@ -3,13 +3,15 @@ import GameArea from './Classes/GameArea.js'
 
 import { createRandomPosition } from './Modules/utils.js'
 
-var character, obstacles = []
+var character, score, obstacles = []
 var gameArea = new GameArea()
 
 function startGame() {
     gameArea.start(updateGameArea)
-    
-    character = new ObjectCanvas(30, 30, "#cecece", 10, 470, gameArea.context) 
+
+    character = new ObjectCanvas(30, 30, 'red', 10, 470, gameArea.context) 
+
+    score = new ObjectCanvas('30px', 'Consolas', 'black', 280, 40, gameArea.context, 'text')
 }
 
 function updateGameArea() {
@@ -28,9 +30,9 @@ function updateGameArea() {
 
         let { height, gap } = createRandomPosition(20, 200, 50, 200)
 
-        obstacles.push(new ObjectCanvas(10, height, 'white', x, 0, gameArea.context))
+        obstacles.push(new ObjectCanvas(10, height, 'green', x, 0, gameArea.context))
 
-        obstacles.push(new ObjectCanvas(10, (x - height - gap), 'white', x, (height + gap), gameArea.context))
+        obstacles.push(new ObjectCanvas(10, (x - height - gap), 'green', x, (height + gap), gameArea.context))
     }
 
     for(let obstacle of obstacles){
@@ -48,7 +50,10 @@ function updateGameArea() {
         if(gameArea.keys[38]) { character.speedY = -1 }
         if(gameArea.keys[39]) { character.speedX = 1 }
         if(gameArea.keys[40]) { character.speedY = 1 }
-    }  
+    } 
+
+    score.text = `SCORE: ${gameArea.frameNo}`
+    score.updateObject()
 
     character.updatePosition()
     character.updateObject()

@@ -1,5 +1,5 @@
 export default class ObjectCanvas {
-    constructor(width, height, color, x, y, context){
+    constructor(width, height, color, x, y, context, type){
         this.width = width
         this.height = height
 
@@ -11,11 +11,20 @@ export default class ObjectCanvas {
 
         this.color = color
         this.context = context
+        this.type = type || ' '
     }
     updateObject(){
-        this.context.fillStyle = this.color
+        if(this.type === 'text'){
+            this.context.font = `${this.width} ${this.height}`
+            this.context.fillStyle = this.color
 
-        this.context.fillRect(this.x, this.y, this.width, this.height)
+            this.context.fillText(this.text, this.x, this.y)
+        }   
+        else {
+            this.context.fillStyle = this.color
+
+            this.context.fillRect(this.x, this.y, this.width, this.height)
+        } 
     }
     updatePosition(){
         this.x += this.speedX
