@@ -1,5 +1,7 @@
-import ObjectCanvas from './Components/ObjectCanvas.js'
-import GameArea from './Components/GameArea.js'
+import ObjectCanvas from './Classes/ObjectCanvas.js'
+import GameArea from './Classes/GameArea.js'
+
+import { createRandomPosition } from './Modules/utils.js'
 
 var character, obstacles = []
 var gameArea = new GameArea()
@@ -22,9 +24,13 @@ function updateGameArea() {
     gameArea.frameNo++
 
     if(gameArea.frameNo == 1 || verifyInterval(150)){
-        let x = gameArea.canvas.width, y = gameArea.canvas.height - 200
+        let x = gameArea.canvas.width
 
-        obstacles.push(new ObjectCanvas(10, 200, 'white', x, y, gameArea.context))
+        let { height, gap } = createRandomPosition(20, 200, 50, 200)
+
+        obstacles.push(new ObjectCanvas(10, height, 'white', x, 0, gameArea.context))
+
+        obstacles.push(new ObjectCanvas(10, (x - height - gap), 'white', x, (height + gap), gameArea.context))
     }
 
     for(let obstacle of obstacles){
