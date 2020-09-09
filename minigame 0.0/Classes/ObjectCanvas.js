@@ -14,6 +14,8 @@ export default class ObjectCanvas {
         this.gravity = 0
         this.gravitySpeed = 0
 
+        this.bounce = 0.6
+
         this.gameArea = gameArea
         this.context = this.gameArea.context
         this.color = color
@@ -80,6 +82,7 @@ export default class ObjectCanvas {
         
         if(this.y > gameBottom){
             this.y = gameBottom
+            this.gravitySpeed = -(this.gravitySpeed * this.bounce)
         }
     }
 
