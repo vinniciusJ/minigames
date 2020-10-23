@@ -15,9 +15,7 @@ function startGame() {
 
     character.gravity = 0.05
 
-    score = new ObjectCanvas('30px', 'Consolas', 'black', 500, 40, gameArea, 'text')
-
-    
+    score = new ObjectCanvas('30px', 'Consolas', 'black', 500, 40, gameArea, 'text')   
 }
 
 function updateGameArea() {
@@ -43,7 +41,7 @@ function updateGameArea() {
     if(gameArea.frameNo == 1 || verifyInterval(150)){
         let x = gameArea.canvas.width, y = gameArea.canvas.height
 
-        let { height, gap } = createRandomPosition(30         , 200, 50, 200)
+        let { height, gap } = createRandomPosition(30, 200, 50, 200)
 
         obstacles.push(new ObjectCanvas(10, height, 'black', x, 0, gameArea))
 

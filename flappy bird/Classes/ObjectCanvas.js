@@ -45,8 +45,7 @@ export default class ObjectCanvas {
             this.context.fillStyle = this.color
 
             this.context.fillRect(this.x, this.y, this.width, this.height)
-
-               
+    
         } 
     }
     updatePosition(){
